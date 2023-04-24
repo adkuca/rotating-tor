@@ -1,0 +1,2 @@
+#!/bin/sh
+exec privoxy --no-daemon --user privoxy /etc/privoxy/config%i

@@ -1,0 +1,9 @@
+SocksPort %SOCKS_PORT
+ControlPort %CONTROL_PORT
+HashedControlPassword %HASHED_CONTROL_PASSWORD
+DataDirectory /var/lib/tor/.tor%INDEX
+
+User tor
+RunAsDaemon 0
+
+Log notice stdout

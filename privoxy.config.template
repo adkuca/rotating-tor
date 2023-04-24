@@ -1,0 +1,35 @@
+listen-address 0.0.0.0:%LISTEN_PORT
+
+forward-socks5t / 127.0.0.1:%TOR_SOCKS_PORT .
+
+### Allow specific IP addresses
+permit-access localhost
+permit-access 172.19.0.0/16
+
+### Logging
+logfile privoxy%INDEX
+
+### Debugging
+debug 1
+debug 2
+debug 1024
+debug 4096
+debug 8192
+
+### Security
+enable-remote-toggle 0
+enable-remote-http-toggle 0
+enable-edit-actions 0
+enforce-blocks 0
+buffer-limit 4096
+enable-proxy-authentication-forwarding 0
+forwarded-connect-retries 0
+## revise this one, apparently security issue, set to 0
+accept-intercepted-requests 1
+socket-timeout 20
+
+toggle  1
+allow-cgi-request-crunching 0
+split-large-forms 0
+keep-alive-timeout 5
+tolerate-pipelining 1

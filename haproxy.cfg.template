@@ -1,0 +1,24 @@
+global
+    log stdout local0
+    maxconn 4096
+    user haproxy
+    group haproxy
+
+defaults
+    log global
+    mode http
+    option httplog
+    option redispatch
+    timeout connect 5s
+    timeout client 50s
+    timeout server 50s
+
+frontend http-in
+    bind *:8123
+    default_backend privoxy_backend
+
+backend privoxy_backend
+    balance roundrobin
+    %PRIVOXY_BACKEND_SERVERS
+    retries 3
+    retry-on 403 all-retryable-errors
